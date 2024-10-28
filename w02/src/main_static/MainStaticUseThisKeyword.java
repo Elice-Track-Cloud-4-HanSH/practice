@@ -8,6 +8,6 @@ public class MainStaticUseThisKeyword {
   public static void main(String[] args) {
     // error: 'method_signature.Test.this' cannot be referenced from a static context
     // warning: Static member 'main_static.MainStaticUseThisKeyword.calculate(int, int)' accessed via instance reference
-    System.out.println(this.calculate(10,10));
+//    System.out.println(this.calculate(10,10));
   }
 }
