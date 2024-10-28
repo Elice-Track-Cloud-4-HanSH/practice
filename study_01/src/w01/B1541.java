@@ -11,16 +11,13 @@ public class B1541 {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st = new StringTokenizer(br.readLine(), "-");
-    StringTokenizer st1;
 
     List<String> strArray = new ArrayList<>();
-    int res = 0;
 
     while (st.hasMoreTokens()) {
       strArray.add(st.nextToken());
     }
 
-    // int result = solution(strArray.removeFirst());
     int result = solution(strArray.remove(0));
 
     for (String str: strArray) {
