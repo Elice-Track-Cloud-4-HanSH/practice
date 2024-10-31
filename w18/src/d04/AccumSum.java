@@ -1,22 +1,27 @@
 package d04;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class AccumSum {
     static long[][] area;
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedReader br;
     static int N;
     static int M;
     public static void main(String[] args) throws IOException {
+//        br = new BufferedReader(new InputStreamReader(System.in));
+        br = new BufferedReader(new FileReader("output.txt"));
         String[] inputted = br.readLine().split(" ");
+
         N = Integer.parseInt(inputted[0]);
         M = Integer.parseInt(inputted[1]);
         int K = Integer.parseInt(inputted[2]);
 
         createMap();
+        System.out.println("sum of area: " + area[N-1][M-1]);
         for (int i = 0; i < K; i++) {
             System.out.println(solution());
         }
@@ -25,10 +30,24 @@ public class AccumSum {
     public static void createMap() throws IOException {
         long[][] gnd = new long[N][M];
         area = new long[N][M];
+        long streamSum = 0;
+        long forSum = 0;
         for (int i = 0; i < N; i++) {
             String[] inputted = br.readLine().split(" ");
+
+            long start = System.currentTimeMillis();
             gnd[i] = Arrays.stream(inputted).mapToLong(Long::parseLong).toArray();
+            streamSum += System.currentTimeMillis() - start;
+
+            start = System.currentTimeMillis();
+            for (int j = 0; j < M; j++) {
+                gnd[i][j] = Long.parseLong(inputted[j]);
+            }
+            forSum += System.currentTimeMillis() - start;
         }
+
+        System.out.printf("stream sum: %dms\n", streamSum);
+        System.out.printf("for sum: %dms\n", forSum);
 
         area[0][0] = gnd[0][0];
         for (int c = 1; c < M; c++) {
