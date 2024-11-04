@@ -12,11 +12,11 @@ public class Permuitation {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        List<Integer> nums = Arrays.stream(br.readLine().split(" ")).map(Integer::parseInt).toList();
-        visited = new boolean[nums.get(0) + 1];
+        int[] nums = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        visited = new boolean[nums[0] + 1];
         Arrays.fill(visited, false);
 
-        permutate(nums.get(0), nums.get(1), 0, "");
+        permutate(nums[0], nums[1], 0, "");
     }
 
     public static void permutate(int maxN, int m, int cnt, String result) {
